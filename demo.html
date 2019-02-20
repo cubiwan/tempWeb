@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/materia/bulmaswatch.min.css">
+    <style>
+
+      .card-footer-item:not(:last-child) {
+        border-right: 0px solid #dbdbdb;
+      }
+    
+      footer {
+        background-color: transparent;
+        border-top: 0px solid #dbdbdb;
+        align-items: stretch;
+        display: flex;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+      }
+
+      .card {
+        max-width:600px;        
+        border: 1px solid rgba(118, 119, 122, 0.959);
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="card" id="game">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" v-bind:src="image">
+                </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">{{name}}</p>
+              <p class="subtitle is-6">
+                {{subname}}
+                <span class="icon is-small">
+                    <i v-bind:class="icon"></i>
+                </span>
+              </p>
+            </div>            
+          </div>
+
+          <div class="content">
+              {{message}}
+            </div>
+
+
+          <footer class="card-footer">
+            <p class="card-footer-item" style="justify-content: flex-start"  v-on:click="buttonLeftClick">
+                <span class="icon is-medium">
+                    <i v-bind:class="buttonLeftIcon"></i>
+                </span>
+                <span>{{buttonLeftText}}</span>
+            </p>
+            <p class="card-footer-item" style="justify-content: flex-end" v-on:click="buttonRigthClick">
+                <span>{{buttonRightText}}</span>
+                <span class="icon is-medium">
+                    <i  v-bind:class="buttonRightIcon"></i>
+                </span>                
+            </p>
+          </footer>
+        </div>
+      </div>
+  </body>
+  <script>
+  
+  var app = new Vue({
+    el: '#game',
+    data: {
+      image: 'Ingeniero_circulo.svg',
+      name: 'Peter Smith',
+      subname: 'Ingeniero jefe',
+      icon: 'fas fa-wrench',
+      message: 'El eje la noria esta dañado. Deberiamos hacer algo',
+      buttonLeftText: 'Comprar nuevo eje de los buenos',
+      buttonRightText: 'Reparar el eje de forma chapucera',
+      buttonLeftIcon: 'fas fa-check-square has-text-success',
+      buttonRightIcon: 'fas fa-ban has-text-danger'
+    },
+    methods: {
+      buttonLeftClick: function () {
+        this.name = "Peter Grant"
+        this.image = 'Limpiador_circulo.svg'
+        this.subname = 'Limpiador'
+        this.message = 'Esta todo muy sucio y dberiamos de limpiar más'
+      },
+      buttonRigthClick: function() {        
+        this.name = "Glory Allen"
+        this.image = 'AtencionCliente_circulo.svg'
+        this.subname = 'Atención al cliente'
+        this.message = 'Tenemos muchas quejas'
+      }
+    }
+  });
+
+  console.log(app);
+  </script>
+</html>
