@@ -38,16 +38,15 @@
         left: 0;
       }
 
+
+
+
+
+
     .blurry-text {
       color: transparent;
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
     }
-
-
-
-
-
-
 
     .hue {
       -webkit-filter: hue-rotate(90deg);
@@ -89,12 +88,15 @@
         <div class="card-content">
           <div class="media">
             <div class="media-left">
-              <figure class="image is-96x96">
-                <img class="is-rounded" v-bind:src="card.image">
+              <figure class="image is-96x96 is-hidden-mobile">
+                  <img class="is-rounded" v-bind:src="card.image">  
+              </figure>
+              <figure class="image is-48x48 is-hidden-tablet">
+                  <img class="is-rounded" v-bind:src="card.image">  
               </figure>
             </div>
           <div class="media-content" style="margin-top: auto">
-            Estas jugando la partida muy bien chavalin lo llevas genia ya si eso te pasas al nivel dificil y lo flipas con ello y tal y cual todo este texto es de relleno
+            Texto generico de relleno para que ocupe espacio y veamos como se distribuye y tal
           </div>            
         </div>
   
@@ -143,17 +145,18 @@
                     <img class="is-rounded" v-bind:src="card.image">  
                 </figure>
               </div>
+            <div class="media-content is-hidden-mobile" style="margin-top: auto">              
+              <p class="title is-2">{{card.name}}</p>
+              <p class="subtitle is-4">{{card.subname}}</p>
             </div>
-            <div class="media-content" style="margin-top: auto">
-              <p class="title is-2 is-hidden-mobile">{{card.name}}</p>
-              <p class="subtitle is-4 is-hidden-mobile">{{card.subname}}</p>
-              <p class="title is-3 is-hidden-tablet">{{card.name}}</p>
-              <p class="subtitle is-5 is-hidden-tablet">{{card.subname}}</p>
+              <div class="media-content is-hidden-tablet" style="margin-top: auto">              
+              <p class="title is-3">{{card.name}}</p>
+              <p class="subtitle is-5">{{card.subname}}</p>
             </div>            
           </div>
 
     
-          <div class="content blurry-text ">
+          <div class="content">
               {{card.message}}
            </div>
 
