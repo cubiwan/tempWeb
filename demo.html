@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/materia/bulmaswatch.min.css">
-    <style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-      .card-footer-item:not(:last-child) {
+  <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/materia/bulmaswatch.min.css">
+  <style>
+    /*.card-footer-item:not(:last-child) {
         border-right: 0px solid #dbdbdb;
       }
     
@@ -36,8 +36,29 @@
         right: 0;
         bottom: 0;
         left: 0;
-      }
+      }*/
 
+    .scores {
+      background-color: #bedcff;
+    }
+
+.scores_down {
+  background-image: url("score_down.png");
+  background-repeat: repeat-x;
+  }
+
+    #game {
+      max-width: 600px;
+      max-height: 900px;
+      border: 1px solid rgba(118, 119, 122, 1);
+      box-shadow: 10px 10px grey;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
 
 
 
@@ -45,7 +66,7 @@
 
     .blurry-text {
       color: transparent;
-      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     }
 
     .hue {
@@ -53,167 +74,167 @@
       filter: hue-rotate(90deg);
     }
 
-  .hue_rotation {
-    animation: hue-rotate 10s linear infinite;
-    min-width: 100%;
-    min-height: 100%;
-  }
-  @keyframes hue-rotate {
-    from {
-      -webkit-filter: hue-rotate(0);
-      -moz-filter: hue-rotate(0);
-      -ms-filter: hue-rotate(0);
-      filter: hue-rotate(0);
+    .hue_rotation {
+      animation: hue-rotate 10s linear infinite;
+      min-width: 100%;
+      min-height: 100%;
     }
-    to {
-      -webkit-filter: hue-rotate(360deg);
-      -moz-filter: hue-rotate(360deg);
-      -ms-filter: hue-rotate(360deg);
-      filter: hue-rotate(360deg);
-    }
-  } 
 
+    @keyframes hue-rotate {
+      from {
+        -webkit-filter: hue-rotate(0);
+        -moz-filter: hue-rotate(0);
+        -ms-filter: hue-rotate(0);
+        filter: hue-rotate(0);
+      }
+      to {
+        -webkit-filter: hue-rotate(360deg);
+        -moz-filter: hue-rotate(360deg);
+        -ms-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+      }
+    }
   </style>
-  </head>
-  <body>
-    <div class="card" id="game">
-        <header class="card-header">
-          <a href="#" class="card-header-icon" aria-label="more options">
-            <span class="icon">                
-              <i class="fas fa-bars is-size-3" aria-hidden="true"></i>
-            </span>
-          </a>
-        </header>        
+</head>
 
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-96x96 is-hidden-mobile">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-              <figure class="image is-48x48 is-hidden-tablet">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-            </div>
-          <div class="media-content" style="margin-top: auto">
-            Texto generico de relleno para que ocupe espacio y veamos como se distribuye y tal
-          </div>            
-        </div>
-  
-        <div class="card-footer">     
-          <div class="card-footer-item">
+<body>
+  <div id="game">
+
+    <div class="card scores">
+      <div class="card-content">
+        <div class="media" style="box-shadow: 1px 1px 3px 3px grey; background-color: #a3b5db;">
+          <div class="media-left">
             <figure class="image is-96x96 is-hidden-mobile">
-                <img class="is-rounded" v-bind:src="card.image">  
+              <img class="is-rounded" v-bind:src="card.image">
             </figure>
             <figure class="image is-48x48 is-hidden-tablet">
-                <img class="is-rounded" v-bind:src="card.image">  
+              <img class="is-rounded" v-bind:src="card.image">
             </figure>
           </div>
-          <div class="card-footer-item">
-              <figure class="image is-96x96 is-hidden-mobile">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-              <figure class="image is-48x48 is-hidden-tablet">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-            </div>
-          <div class="card-footer-item">
-              <figure class="image is-96x96 is-hidden-mobile">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-              <figure class="image is-48x48 is-hidden-tablet">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-            </div>
-          <div class="card-footer-item">
-              <figure class="image is-96x96 is-hidden-mobile">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-              <figure class="image is-48x48 is-hidden-tablet">
-                  <img class="is-rounded" v-bind:src="card.image">  
-              </figure>
-            </div>
-        </div>
-    
-    
-          <div class="media">
-            <div class="media-left">
-                <figure class="image is-128x128 is-hidden-mobile">
-                    <img class="is-rounded" v-bind:src="card.image">  
-                </figure>
-                <figure class="image is-96x96 is-hidden-tablet">
-                    <img class="is-rounded" v-bind:src="card.image">  
-                </figure>
-              </div>
-            <div class="media-content is-hidden-mobile" style="margin-top: auto">              
-              <p class="title is-2">{{card.name}}</p>
-              <p class="subtitle is-4">{{card.subname}}</p>
-            </div>
-              <div class="media-content is-hidden-tablet" style="margin-top: auto">              
-              <p class="title is-3">{{card.name}}</p>
-              <p class="subtitle is-5">{{card.subname}}</p>
-            </div>            
+          <div class="media-content" style="margin-top: auto">
+            Texto generico de relleno para que ocupe espacio y veamos como se distribuye y tal
           </div>
-
-    
-          <div class="content">
-              {{card.message}}
-           </div>
-
-
-          <div class="card-footer">
-            <p class="card-footer-item" style="justify-content: flex-start"  v-on:click="buttonLeftClick">
-                <span class="icon is-medium">
-                    <i v-bind:class="buttonLeftIcon"></i>
-                </span>
-                <span>{{card.buttonLeftText}}</span>
-            </p>
-            <p class="card-footer-item" style="justify-content: flex-end" v-on:click="buttonRigthClick">
-                <span>{{card.buttonRightText}}</span>
-                <span class="icon is-medium">
-                    <i  v-bind:class="buttonRightIcon"></i>
-                </span>                
-            </p>
-          </div>
-
-          <footer class="card-footer">     
-              <div class="card-footer-item">
-                <figure class="image is-64x64">
-                  <img v-bind:src="card.image">
-                </figure>
-              </div>
-              <div class="card-footer-item">
-                <figure class="image is-64x64">
-                  <img v-bind:src="card.image">
-                </figure>
-              </div>
-              <div class="card-footer-item">
-                <figure class="image is-64x64">
-                  <img v-bind:src="card.image">
-                </figure>
-              </div>
-              <div class="card-footer-item">
-                  <figure class="image is-64x64">
-                    <img v-bind:src="card.image">
-                  </figure>
-              </div>
-              <div class="card-footer-item">
-                  <figure class="image is-64x64">
-                    <img v-bind:src="card.image">
-                  </figure>
-              </div>
-              <div class="card-footer-item">
-                  <figure class="image is-64x64">
-                    <img v-bind:src="card.image">
-                  </figure>
-              </div>                                                    
-          </footer>
-
         </div>
       </div>
-  </body>
-  <script>
-  
+
+
+      <div class="card-footer">
+        <div class="card-footer-item">
+          <figure class="image is-96x96 is-hidden-mobile">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+          <figure class="image is-64x64 is-hidden-tablet">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-96x96 is-hidden-mobile">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+          <figure class="image is-64x64 is-hidden-tablet">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-96x96 is-hidden-mobile">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+          <figure class="image is-64x64 is-hidden-tablet">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-96x96 is-hidden-mobile">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+          <figure class="image is-64x64 is-hidden-tablet">
+            <img class="is-rounded" v-bind:src="card.image">
+          </figure>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="card" style="box-shadow: 0px 0px 0px 0px transparent;">
+      <div class="card-content scores_down">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128 is-hidden-mobile">
+              <img class="is-rounded" v-bind:src="card.image">
+            </figure>
+            <figure class="image is-96x96 is-hidden-tablet">
+              <img class="is-rounded" v-bind:src="card.image">
+            </figure>
+          </div>
+          <div class="media-content is-hidden-mobile" style="margin-top: auto">
+            <p class="title is-2">{{card.name}}</p>
+            <p class="subtitle is-4">{{card.subname}}</p>
+          </div>
+          <div class="media-content is-hidden-tablet" style="margin-top: auto">
+            <p class="title is-3">{{card.name}}</p>
+            <p class="subtitle is-5">{{card.subname}}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-content" style="height:100%">
+        {{card.message}}
+      </div>
+
+
+      <div class="card-footer">
+        <p class="card-footer-item" style="justify-content: flex-start" v-on:click="buttonLeftClick">
+          <span>{{card.buttonLeftText}}</span>
+        </p>
+        <p class="card-footer-item" style="justify-content: flex-end" v-on:click="buttonRigthClick">
+          <span>{{card.buttonRightText}}</span>
+
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+        <div class="card-footer-item">
+          <figure class="image is-64x64">
+            <img v-bind:src="card.image">
+          </figure>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+</body>
+<script>
+
   var app = new Vue({
     el: '#game',
     data: {
@@ -223,10 +244,8 @@
         subname: 'Ingeniero jefe',
         icon: 'fas fa-wrench',
         message: 'El eje la noria esta dañado. Deberiamos hacer algo',
-        buttonLeftText: 'Comprar nuevo eje de los buenos',
-        buttonRightText: 'Reparar el eje de forma chapucera',
-        buttonLeftIcon: 'fas fa-check-square has-text-success',
-        buttonRightIcon: 'fas fa-ban has-text-danger'
+        buttonLeftText: 'Comprar nuevo',
+        buttonRightText: 'Reparar',
       }
     },
     methods: {
@@ -236,7 +255,7 @@
         this.subname = 'Limpiador'
         this.message = 'Esta todo muy sucio y dberiamos de limpiar más'
       },
-      buttonRigthClick: function() {        
+      buttonRigthClick: function () {
         this.name = "Glory Allen"
         this.image = 'AtencionCliente_circulo.svg'
         this.subname = 'Atención al cliente'
@@ -246,5 +265,6 @@
   });
 
   console.log(app);
-  </script>
+</script>
+
 </html>
