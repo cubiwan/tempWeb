@@ -39,13 +39,13 @@
       }*/
 
     .scores {
-      background-color: #bedcff;
+      background-color: #000;
     }
 
-.scores_down {
+/*.scores_down {
   background-image: url("score_down.png");
   background-repeat: repeat-x;
-  }
+  }*/
 
     #game {
       max-width: 600px;
@@ -101,22 +101,6 @@
   <div id="game">
 
     <div class="card scores">
-      <div class="card-content">
-        <div class="media" style="box-shadow: 1px 1px 3px 3px grey; background-color: #a3b5db;">
-          <div class="media-left">
-            <figure class="image is-96x96 is-hidden-mobile">
-              <img class="is-rounded" v-bind:src="card.image">
-            </figure>
-            <figure class="image is-48x48 is-hidden-tablet">
-              <img class="is-rounded" v-bind:src="card.image">
-            </figure>
-          </div>
-          <div class="media-content" style="margin-top: auto">
-            Texto generico de relleno para que ocupe espacio y veamos como se distribuye y tal
-          </div>
-        </div>
-      </div>
-
 
       <div class="card-footer">
         <div class="card-footer-item">
@@ -157,7 +141,7 @@
 
 
     <div class="card" style="box-shadow: 0px 0px 0px 0px transparent;">
-      <div class="card-content scores_down">
+      <div class="card-content">
         <div class="media">
           <div class="media-left">
             <figure class="image is-128x128 is-hidden-mobile">
@@ -196,39 +180,59 @@
     </div>
 
     <div class="card">
-      <footer class="card-footer">
+        <footer class="card-footer">
+
+            <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      Vas avanzando correctamente pero tu gestion no es suficientemente buena
+                    </p>
+                  </div>                 
+                </div>
+              </article>
+
+
+        </footer>
+      <footer class="card-footer">        
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
         <div class="card-footer-item">
-          <figure class="image is-64x64">
+          <figure class="image is-32x32">
             <img v-bind:src="card.image">
           </figure>
         </div>
       </footer>
 
+      
     </div>
 
   </div>
@@ -240,8 +244,8 @@
     data: {
       card: {
         image: 'Ingeniero_circulo.svg',
-        name: 'Peter Smith',
-        subname: 'Ingeniero jefe',
+        name: 'Ingenieria',
+        subname: 'Peter Simth',
         icon: 'fas fa-wrench',
         message: 'El eje la noria esta dañado. Deberiamos hacer algo',
         buttonLeftText: 'Comprar nuevo',
