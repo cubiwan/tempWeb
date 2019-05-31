@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+            apiKey: "AIzaSyCfuCkfDkei6kS3q0O5Q37IoHbeTjRyPL0",
+            authDomain: "pre-sinnaps.firebaseapp.com",
+            databaseURL: "https://pre-sinnaps.firebaseio.com",
+            projectId: "pre-sinnaps",
+            storageBucket: "pre-sinnaps.appspot.com",
+            messagingSenderId: "58889346741"
+     };
+
+
+
+
+
+  firebase.initializeApp(config);
+
+
+
+function permission(){
+    messaging.requestPermission().then(function() {
+    console.log('Notification permission granted.');
+    // TODO(developer): Retrieve an Instance ID token for use with FCM.
+    // ...
+  }).catch(function(err) {
+    console.log('Unable to get permission to notify.', err);
+  });
+}
+</script>
+</head>
+<body>
+
+
+
+
+
+</body>
+</html>
