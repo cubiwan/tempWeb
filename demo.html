@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="game.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/materia/bulmaswatch.min.css">
   <style>
@@ -60,7 +61,7 @@
       left: 0;
     }
 
-   #screenFooter {
+    #screenFooter {
       display: flex;
       justify-content: center;
     }
@@ -177,32 +178,29 @@
         </p>
         <p class="card-footer-item" style="justify-content: flex-end" v-on:click="buttonRigthClick">
           <span>{{card.buttonRightText}}</span>
-
         </p>
       </div>
     </div>
 
 <nav class="navbar is-fixed-bottom" id="screenFooter">    
     <div class="card">
-        <footer class="card-footer">
-
-            <article class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                  </p>
-                </figure>
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      Vas avanzando correctamente pero tu gestion no es suficientemente buena
-                    </p>
-                  </div>                 
-                </div>
-              </article>
-
-
-        </footer>
+      <footer class="card-footer">
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  Reputación: {{game.reputacion}}<br>
+                  Visitantes: {{game.visitantes}}, Atracciones: {{game.atracciones}}, Trabajadores:  {{game.trabajadores}}, Servicios: {{game.servicios}}
+                </p>
+              </div>                 
+            </div>
+          </article>
+      </footer>
       <footer class="card-footer">        
         <div class="card-footer-item">
           <figure class="image is-32x32">
@@ -234,9 +232,7 @@
             <img v-bind:src="card.image">
           </figure>
         </div>
-      </footer>
-
-      
+      </footer>      
     </div>
     </nav>
   </div>
@@ -254,23 +250,40 @@
         message: 'El eje la noria esta dañado. Deberiamos hacer algo',
         buttonLeftText: 'Comprar un eje nuevo',
         buttonRightText: 'Reparar el eje actual',
+      },
+      game: {
+        reputacion: 0,
+        visitantes: 50,
+        atracciones: 50,
+        trabajadores: 50,
+        servicios: 50
       }
     },
     methods: {
       buttonLeftClick: function () {
-        this.name = "Peter Grant"
-        this.image = 'Limpiador_circulo.svg'
-        this.subname = 'Limpiador'
-        this.message = 'Esta todo muy sucio y dberiamos de limpiar más'
+        var values = baraja.jugarCarta(this.card.id, 0);
+        this.game.reputacion += values.reputacion
+        this.game.visitantes += values.visitantes
+        this.game.atracciones += values.atracciones
+        this.game.trabajadores += values.trabajadores
+        this.game.servicios += values.servicios
+        this.card = baraja.sacarCarta();
       },
       buttonRigthClick: function () {
-        this.name = "Glory Allen"
-        this.image = 'AtencionCliente_circulo.svg'
-        this.subname = 'Atención al cliente'
-        this.message = 'Tenemos muchas quejas'
+        var values = baraja.jugarCarta(this.card.id, 1);
+        this.game.reputacion += values.reputacion
+        this.game.visitantes += values.visitantes
+        this.game.atracciones += values.atracciones
+        this.game.trabajadores += values.trabajadores
+        this.game.servicios += values.servicios
+        this.card = baraja.sacarCarta();
       }
     }
   });
+
+  var baraja = new juego();
+  baraja.generarMazo();  
+  app.card = baraja.sacarCarta();
 
   console.log(app);
 </script>
